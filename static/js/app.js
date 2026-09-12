@@ -920,27 +920,10 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const data = await MeetAiAPI.register(username, email, password);
                 MeetAiAPI.setToken(data.token);
-                // Trigger OTP Verification
-                state.unverifiedEmail = email;
-                document.getElementById('otp-view-desc').innerText = `We simulated sending a verification OTP to ${email}. Submit the OTP to complete activation.`;
                 document.getElementById('login-view').style.display = 'none';
                 document.body.classList.remove('auth-mode');
-                document.getElementById('otp-view').style.display = 'block';
-            } catch (err) {
-                alert(err.message);
-            }
-        });
-    }
-
-    const otpForm = document.getElementById('otp-form');
-    if (otpForm) {
-        otpForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const otp = document.getElementById('otp-code').value;
-            try {
-                await MeetAiAPI.verifyOTP(state.unverifiedEmail, otp);
-                alert('Account activated!');
-                window.location.hash = '#dashboard';
+                showLoginAlert('success', `Welcome to Tech Clevora, ${username}! Directing to your dashboard...`);
+                setTimeout(() => { window.location.hash = '#dashboard'; }, 500);
             } catch (err) {
                 alert(err.message);
             }
