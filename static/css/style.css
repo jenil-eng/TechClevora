@@ -3647,7 +3647,7 @@ table {
     -webkit-overflow-scrolling: touch;
 }
 
-/* 2. Responsive Grids Override (Laptops / Tablets / Mobiles <= 992px) */
+/* 2. Responsive Grids & Layout Overrides (Laptops / Tablets <= 992px) */
 @media (max-width: 992px) {
     /* Collapse multi-column inline grids into responsive single columns */
     div[style*="grid-template-columns"],
@@ -3658,14 +3658,14 @@ table {
         gap: 16px !important;
     }
 
-    /* Top navbar layout on mobile & tablet */
+    /* Top navbar layout on tablet */
     body.is-authed .top-navbar {
-        padding: 8px 12px;
-        gap: 8px;
+        padding: 10px 14px;
+        gap: 10px;
     }
 
     .top-search {
-        max-width: 200px;
+        max-width: 260px;
     }
 
     .top-user-chip #top-user-name {
@@ -3720,7 +3720,7 @@ table {
         font-size: 13px;
     }
 
-    /* Modals & Glass cards padding */
+    /* Glass cards & view sections padding */
     .glass-card,
     .view-section {
         padding: 16px 12px !important;
@@ -3741,7 +3741,7 @@ table {
         scroll-snap-align: start;
     }
 
-    /* Form controls & comfortable touch targets */
+    /* Form controls & touch targets */
     .form-control,
     .btn-primary,
     .btn-secondary,
@@ -3751,13 +3751,83 @@ table {
         font-size: 14px;
     }
 
-    .top-search input {
-        font-size: 13px;
-        padding-left: 32px;
+    /* Section header flex wrapping */
+    .section-divider-title,
+    .card-title-premium[style*="display: flex"] {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
     }
 }
 
-/* 4. Small Mobile Screens (<= 480px) */
+/* 4. Mobile Screen Optimization (<= 600px) */
+@media (max-width: 600px) {
+    /* Top navbar full-width search input placement */
+    body.is-authed .top-navbar {
+        flex-wrap: wrap;
+        gap: 8px 10px;
+        padding: 10px 12px;
+    }
+
+    .top-search {
+        order: 3;
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+        margin: 4px 0 0 0;
+    }
+
+    .top-search input {
+        height: 38px;
+        font-size: 13px;
+        padding-left: 34px;
+    }
+
+    #notification-dropdown {
+        width: calc(100vw - 32px) !important;
+        right: -10px !important;
+        top: 50px !important;
+    }
+
+    /* Drawer backdrop & off-canvas sidebar drawer width */
+    body.sidebar-open .sidebar {
+        width: 85vw !important;
+        max-width: 290px !important;
+        z-index: 9999 !important;
+    }
+
+    /* Skill profile tags container */
+    #dash-verified-skills-tags,
+    #dash-missing-skills-tags {
+        gap: 6px !important;
+    }
+
+    /* Company prep quick launch grid */
+    div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Chart canvas height adjustment */
+    .chart-container-wrapper {
+        height: 210px !important;
+    }
+
+    /* Button groups & filter rows */
+    .btn-group,
+    .filter-group,
+    .tab-group {
+        flex-wrap: wrap !important;
+        width: 100% !important;
+    }
+
+    .btn-group button,
+    .filter-group button,
+    .tab-group button {
+        flex: 1 1 auto !important;
+        text-align: center;
+    }
+}
+
+/* 5. Ultra-compact Mobile Screens (<= 480px) */
 @media (max-width: 480px) {
     .hero-cards-grid {
         grid-template-columns: 1fr !important;
@@ -3775,10 +3845,6 @@ table {
         font-size: 13px;
     }
 
-    .top-search {
-        max-width: 130px;
-    }
-
     .demo-login-box {
         padding: 10px !important;
     }
@@ -3787,7 +3853,31 @@ table {
         width: 100%;
         flex: 1 1 100% !important;
     }
+
+    /* Matched job card content stacking */
+    #dash-matched-jobs-list > div {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+    }
+
+    /* Badge sizes */
+    .badge {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+
+    /* Hero title font size */
+    .hero-title {
+        font-size: 24px;
+    }
+
+    /* Auth card modal styling */
+    .auth-card {
+        padding: 22px 16px !important;
+    }
 }
+
 
 
 
