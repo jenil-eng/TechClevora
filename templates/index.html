@@ -575,7 +575,97 @@
                     </div>
                 </div>
 
-                <!-- 3. Overall Performance & Growth Chart -->
+                <!-- 3. Skills Competency & Target Skill Gap Badges -->
+                <div class="glass-card" style="margin-top: 24px; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <h3 class="card-title-premium" style="margin: 0;"><i class="fa-solid fa-code text-primary"></i> Skills Profile & Target Gaps</h3>
+                        <span class="badge badge-secondary">Extracted from Resume</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <h4 style="font-size: 12px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; font-weight: 600;">Verified Technical Skills:</h4>
+                            <div id="dash-verified-skills-tags" style="display: flex; flex-wrap: wrap; gap: 6px;">
+                                <span class="badge badge-success"><i class="fa-solid fa-check"></i> Python</span>
+                                <span class="badge badge-success"><i class="fa-solid fa-check"></i> Flask</span>
+                                <span class="badge badge-success"><i class="fa-solid fa-check"></i> JavaScript</span>
+                                <span class="badge badge-success"><i class="fa-solid fa-check"></i> SQL</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 12px; text-transform: uppercase; color: var(--color-danger); margin-bottom: 8px; font-weight: 600;">Missing Target Skills to Add:</h4>
+                            <div id="dash-missing-skills-tags" style="display: flex; flex-wrap: wrap; gap: 6px;">
+                                <span class="badge badge-danger"><i class="fa-solid fa-plus"></i> Docker</span>
+                                <span class="badge badge-danger"><i class="fa-solid fa-plus"></i> AWS Cloud</span>
+                                <span class="badge badge-danger"><i class="fa-solid fa-plus"></i> CI/CD Pipeline</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Recommended Jobs & Company Prep Quick Launch -->
+                <div class="dash-snapshot-grid" style="grid-template-columns: 1.2fr 1fr; margin-top: 24px;">
+                    <!-- Matched Jobs for Your Profile -->
+                    <div class="glass-card snapshot-card">
+                        <h3 class="card-title-premium" style="display: flex; justify-content: space-between; align-items: center;">
+                            <span><i class="fa-solid fa-briefcase text-success"></i> Recommended Job Matches</span>
+                            <a href="#applications" style="font-size: 12px; color: var(--color-primary); text-decoration: none;">View Applications <i class="fa-solid fa-arrow-right"></i></a>
+                        </h3>
+                        <div id="dash-matched-jobs-list" style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+                                <div>
+                                    <strong style="font-size: 14px; color: var(--text-main);">Full Stack Engineer</strong>
+                                    <div style="font-size: 12px; color: var(--text-muted);">Stripe • $120k-$145k</div>
+                                </div>
+                                <span class="badge badge-success">95% Match</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+                                <div>
+                                    <strong style="font-size: 14px; color: var(--text-main);">Backend Developer</strong>
+                                    <div style="font-size: 12px; color: var(--text-muted);">Vercel • $130k-$150k</div>
+                                </div>
+                                <span class="badge badge-success">92% Match</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Target Company Prep Shortcuts -->
+                    <div class="glass-card snapshot-card">
+                        <h3 class="card-title-premium"><i class="fa-solid fa-building text-warning"></i> Company Prep Guides</h3>
+                        <p style="font-size: 13px; color: var(--text-muted); margin: 4px 0 12px 0;">Targeted interview question banks for top tech companies</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            <a href="#companies" class="btn-company-prep" style="padding: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                                <i class="fa-brands fa-google" style="font-size: 20px; color: #4285F4;"></i>
+                                <div>
+                                    <strong style="font-size: 13px; color: var(--text-main); display: block;">Google</strong>
+                                    <span style="font-size: 11px; color: var(--text-muted);">12 Questions</span>
+                                </div>
+                            </a>
+                            <a href="#companies" class="btn-company-prep" style="padding: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                                <i class="fa-brands fa-amazon" style="font-size: 20px; color: #FF9900;"></i>
+                                <div>
+                                    <strong style="font-size: 13px; color: var(--text-main); display: block;">Amazon</strong>
+                                    <span style="font-size: 11px; color: var(--text-muted);">15 Questions</span>
+                                </div>
+                            </a>
+                            <a href="#companies" class="btn-company-prep" style="padding: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                                <i class="fa-brands fa-microsoft" style="font-size: 20px; color: #F25022;"></i>
+                                <div>
+                                    <strong style="font-size: 13px; color: var(--text-main); display: block;">Microsoft</strong>
+                                    <span style="font-size: 11px; color: var(--text-muted);">10 Questions</span>
+                                </div>
+                            </a>
+                            <a href="#companies" class="btn-company-prep" style="padding: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                                <i class="fa-brands fa-meta" style="font-size: 20px; color: #0668E1;"></i>
+                                <div>
+                                    <strong style="font-size: 13px; color: var(--text-main); display: block;">Meta</strong>
+                                    <span style="font-size: 11px; color: var(--text-muted);">14 Questions</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Overall Performance & Growth Chart -->
                 <div class="glass-card" style="margin-top: 24px; padding: 24px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                         <div>

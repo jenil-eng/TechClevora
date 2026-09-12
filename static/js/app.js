@@ -1055,6 +1055,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (healthCoachEl) {
                 healthCoachEl.innerHTML = `<strong>AI Coach:</strong> "Your overall career readiness score is ${healthScore}%. You have verified ${skillsCount} core skills and identified ${weakSkillsCount} key focus areas to work on."`;
             }
+
+            // Render verified & missing skills badges
+            const verifiedContainer = document.getElementById('dash-verified-skills-tags');
+            if (verifiedContainer && data.latest_resume && data.latest_resume.skills && data.latest_resume.skills.length > 0) {
+                verifiedContainer.innerHTML = data.latest_resume.skills.slice(0, 8).map(s => 
+                    `<span class="badge badge-success"><i class="fa-solid fa-check"></i> ${s}</span>`
+                ).join('');
+            }
+
+            const missingContainer = document.getElementById('dash-missing-skills-tags');
+            if (missingContainer && data.latest_resume && data.latest_resume.analysis && data.latest_resume.analysis.missing_skills && data.latest_resume.analysis.missing_skills.length > 0) {
+                missingContainer.innerHTML = data.latest_resume.analysis.missing_skills.slice(0, 6).map(s => 
+                    `<span class="badge badge-danger"><i class="fa-solid fa-plus"></i> ${s}</span>`
+                ).join('');
+            }
  
             // Toggle admin role button if user is administrator
             const adminMenu = document.querySelector('.admin-only');
