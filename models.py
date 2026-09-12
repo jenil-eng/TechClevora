@@ -376,3 +376,22 @@ def migrate_database(app):
                             except Exception as e:
                                 print(f"Note: Column {col_name} on {table_name} migration check: {e}")
 
+        # Automatically seed standard demo & admin users into SQLite database
+        try:
+            demo_user = User.query.filter_by(email='user@techclevora.com').first()
+            if not demo_user:
+                demo_user = User(username='TechClevoraUser', email='user@techclevora.com', role='user')
+                demo_user.set_password('password123')
+                db.session.add(demo_user)
+
+            admin_user = User.query.filter_by(email='admin@techclevora.com').first()
+            if not admin_user:
+                admin_user = User(username='AdminUser', email='admin@techclevora.com', role='admin')
+                admin_user.set_password('admin123')
+                db.session.add(admin_user)
+
+            db.session.commit()
+        except Exception as seed_err:
+            print(f"Seed users note: {seed_err}")
+            db.session.rollback()
+

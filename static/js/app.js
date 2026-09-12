@@ -4604,3 +4604,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     bootstrap();
 });
+
+window.fillDemoLogin = function(email, password) {
+    const emailEl = document.getElementById('login-email');
+    const passEl = document.getElementById('login-password');
+    if (emailEl) emailEl.value = email;
+    if (passEl) passEl.value = password;
+};
+
