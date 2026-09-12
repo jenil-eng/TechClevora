@@ -553,7 +553,7 @@ def download_report(report_id):
         return "Unauthorized: Missing token query parameter.", 401
         
     try:
-        data = jwt.decode(token, os.getenv("JWT_SECRET_KEY", "meetai_secret_key_998877"), algorithms=['HS256'])
+        data = jwt.decode(token, os.getenv("JWT_SECRET_KEY", "techclevora_secret_key_998877"), algorithms=['HS256'])
         user = db.session.get(User, int(data['sub']))
         if not user:
             return "Unauthorized: User not found.", 401

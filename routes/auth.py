@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 
 auth_bp = Blueprint('auth', __name__)
 
-SECRET_KEY = os.getenv("JWT_SECRET_KEY", "meetai_secret_key_998877")
+SECRET_KEY = os.getenv("JWT_SECRET_KEY", "techclevora_secret_key_998877")
 
 def generate_token(user_id):
     payload = {

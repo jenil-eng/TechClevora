@@ -12,7 +12,11 @@ def create_app(config=None):
     CORS(app)
     
     # Configure SQLite Database
-    db_path = os.path.join(os.path.dirname(__file__), 'meetai.db')
+    db_path = os.path.join(os.path.dirname(__file__), 'techclevora.db')
+    if not os.path.exists(db_path):
+        legacy_db = os.path.join(os.path.dirname(__file__), 'meetai.db')
+        if os.path.exists(legacy_db):
+            db_path = legacy_db
     app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path.replace(os.sep, '/')}"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     

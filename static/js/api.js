@@ -4,8 +4,8 @@
    ==========================================================================
 */
 
-const MeetAiAPI = {
-    TOKEN_KEY: 'meetai_token',
+const TechClevoraAPI = {
+    TOKEN_KEY: 'techclevora_token',
 
     /**
      * Persists the JWT issued by /api/auth/login.
@@ -15,6 +15,8 @@ const MeetAiAPI = {
     setToken(token, persist = true) {
         localStorage.removeItem(this.TOKEN_KEY);
         sessionStorage.removeItem(this.TOKEN_KEY);
+        localStorage.removeItem('meetai_token');
+        sessionStorage.removeItem('meetai_token');
         if (!token) return;
 
         if (persist) {
@@ -25,7 +27,7 @@ const MeetAiAPI = {
     },
 
     getToken() {
-        return localStorage.getItem(this.TOKEN_KEY) || sessionStorage.getItem(this.TOKEN_KEY);
+        return localStorage.getItem(this.TOKEN_KEY) || sessionStorage.getItem(this.TOKEN_KEY) || localStorage.getItem('meetai_token') || sessionStorage.getItem('meetai_token');
     },
 
     isLoggedIn() {
@@ -185,3 +187,7 @@ const MeetAiAPI = {
         });
     }
 };
+
+window.TechClevoraAPI = TechClevoraAPI;
+window.MeetAiAPI = TechClevoraAPI;
+
