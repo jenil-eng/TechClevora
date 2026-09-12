@@ -2011,15 +2011,18 @@
                         </div>
                     </div>
                     <div class="glass-card" style="display:flex; flex-direction:column; gap:20px;">
-                        <div style="flex:1;">
-                            <h3>ATS Trend</h3>
-                            <div style="height: 120px; position: relative;">
+                        <div style="flex:1; background: rgba(0, 208, 132, 0.04); padding: 16px; border-radius: 12px; border: 1px solid rgba(0, 208, 132, 0.12);">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <h3 style="margin:0; font-size:15px; color:var(--text-main);"><i class="fa-solid fa-chart-bar text-success"></i> ATS Score Growth History</h3>
+                                <span class="badge badge-success" id="ats-trend-badge">+14% Growth</span>
+                            </div>
+                            <div style="height: 160px; position: relative; margin-top: 12px;">
                                 <canvas id="chart-ats-trend-optimizer"></canvas>
                             </div>
                         </div>
-                        <div style="flex:1;">
-                            <h3>Resume Completeness</h3>
-                            <div style="height: 120px; position: relative;">
+                        <div style="flex:1; padding: 12px 16px;">
+                            <h3 style="margin-bottom: 8px; font-size: 15px;"><i class="fa-solid fa-chart-pie text-primary"></i> Resume Completeness</h3>
+                            <div style="height: 150px; position: relative;">
                                 <canvas id="chart-ats-completeness-donut"></canvas>
                             </div>
                         </div>

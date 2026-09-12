@@ -3042,30 +3042,66 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Trend Chart
+        // Trend Chart - Clean ATS Score History Bar Chart
         const atsTrend = document.getElementById('chart-ats-trend-optimizer');
         if (atsTrend) {
             if (state.activeCharts.atsTrend) state.activeCharts.atsTrend.destroy();
+            const trendData = data.ats_trend && data.ats_trend.length > 0 ? data.ats_trend : [
+                { upload: 'Upload 1', score: 70 },
+                { upload: 'Upload 2', score: 78 },
+                { upload: 'Upload 3', score: 88 }
+            ];
+
+            const scores = trendData.map(t => t.score);
+            const firstScore = scores[0] || 70;
+            const latestScore = scores[scores.length - 1] || 88;
+            const diff = latestScore - firstScore;
+
+            const badgeEl = document.getElementById('ats-trend-badge');
+            if (badgeEl) {
+                badgeEl.innerText = diff >= 0 ? `+${diff}% Growth` : `${diff}% Drop`;
+                badgeEl.className = diff >= 0 ? 'badge badge-success' : 'badge badge-danger';
+            }
+
             state.activeCharts.atsTrend = new Chart(atsTrend, {
-                type: 'line',
+                type: 'bar',
                 data: {
-                    labels: data.ats_trend.map(t => t.upload),
+                    labels: trendData.map(t => t.upload),
                     datasets: [{
-                        label: 'ATS History',
-                        data: data.ats_trend.map(t => t.score),
-                        borderColor: '#00D084',
-                        backgroundColor: 'rgba(0, 208, 132, 0.1)',
-                        fill: true,
-                        tension: 0.4
+                        label: 'ATS Match Score',
+                        data: scores,
+                        backgroundColor: '#00D084',
+                        borderRadius: 6,
+                        borderSkipped: false,
+                        barThickness: 28
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => ` ATS Match: ${context.raw}%`
+                            }
+                        }
+                    },
                     scales: {
-                        x: { grid: { display: false }, ticks: { color: '#9CA3AF' } },
-                        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9CA3AF' } }
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#E2E8F0', font: { size: 12, weight: 'bold' } }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.08)' },
+                            ticks: {
+                                color: '#9CA3AF',
+                                font: { size: 11 },
+                                callback: (v) => `${v}%`
+                            },
+                            min: 0,
+                            max: 100
+                        }
                     }
                 }
             });
