@@ -38,6 +38,10 @@ const TechClevoraAPI = {
         this.setToken(null);
     },
 
+    getBaseUrl() {
+        return window.API_BASE_URL || localStorage.getItem('techclevora_api_url') || '';
+    },
+
     async request(endpoint, options = {}) {
         const token = this.getToken();
         const headers = options.headers || {};
@@ -50,11 +54,14 @@ const TechClevoraAPI = {
         if (token) {
             headers['Authorization'] = `Bearer ${token}`;
         }
+
+        const baseUrl = this.getBaseUrl();
+        const fullUrl = endpoint.startsWith('http') ? endpoint : `${baseUrl}${endpoint}`;
         
         options.headers = headers;
         
         try {
-            const response = await fetch(endpoint, options);
+            const response = await fetch(fullUrl, options);
             const data = await response.json().catch(() => ({}));
             
             if (!response.ok) {
