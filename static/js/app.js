@@ -1478,31 +1478,44 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
  
-        // Chart 3: ATS Historical Trend
+        // Chart 3: ATS & Interview Progress Trend
         const chartTrend = document.getElementById('chart-ats-trend');
         if (chartTrend) {
             if (state.activeCharts.trend) state.activeCharts.trend.destroy();
-            const atsTrend = stats.ats_trend || [60, 68, 75, 81, 88, 92];
+            const atsTrend = stats.ats_trend || [60, 65, 70, 75, 82, 88];
+            const readinessTrend = stats.readiness_trend || [50, 58, 65, 70, 76, 80];
             state.activeCharts.trend = new Chart(chartTrend, {
                 type: 'line',
                 data: {
-                    labels: atsTrend.map((_, i) => `Upload ${i + 1}`),
-                    datasets: [{
-                        label: 'ATS Score',
-                        data: atsTrend,
-                        borderColor: '#00D084',
-                        backgroundColor: 'rgba(0, 208, 132, 0.1)',
-                        fill: true,
-                        tension: 0.4
-                    }]
+                    labels: atsTrend.map((_, i) => `Attempt ${i + 1}`),
+                    datasets: [
+                        {
+                            label: 'ATS Resume Score',
+                            data: atsTrend,
+                            borderColor: '#8B5CF6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Interview Readiness',
+                            data: readinessTrend,
+                            borderColor: '#00D084',
+                            backgroundColor: 'rgba(0, 208, 132, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }
+                    ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
+                    plugins: {
+                        legend: { display: true, position: 'top', labels: { color: '#9CA3AF', usePointStyle: true, boxWidth: 8 } }
+                    },
                     scales: {
                         x: { grid: { display: false }, ticks: { color: '#9CA3AF' } },
-                        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9CA3AF' } }
+                        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9CA3AF' }, min: 0, max: 100 }
                     }
                 }
             });

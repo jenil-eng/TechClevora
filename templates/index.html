@@ -496,454 +496,96 @@
                     </a>
                 </nav>
 
-                <!-- 1. Hero AI Summary Cards (6 Cards) -->
-                <div class="hero-cards-grid">
-                    <div class="glass-card hero-card" id="analytics-card-score">
+                <!-- 1. Primary Clean Summary Cards (4 Cards) -->
+                <div class="hero-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+                    <div class="glass-card hero-card">
                         <div class="hero-card-header">
-                            <span class="hero-card-title">Resume Score</span>
-                            <span class="hero-card-trend trend-up">▲ +8%</span>
+                            <span class="hero-card-title">ATS Match Score</span>
+                            <span class="hero-card-trend trend-up"><i class="fa-solid fa-file-circle-check"></i> Resume</span>
                         </div>
                         <div class="hero-card-body">
-                            <div class="hero-card-value" id="dash-resume-score">92%</div>
-                            <div class="hero-card-visual">
-                                <svg width="50" height="50" viewBox="0 0 36 36" class="circular-chart">
-                                    <path class="circle-bg-thin"
-                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle-fill-thin stroke-primary" id="dash-resume-score-circle"
-                                        stroke-dasharray="92, 100"
-                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                </svg>
-                            </div>
+                            <div class="hero-card-value" id="dash-ats-score">0%</div>
+                            <div class="hero-card-icon"><i class="fa-solid fa-bullseye text-primary"></i></div>
                         </div>
                     </div>
 
-                    <div class="glass-card hero-card" id="analytics-card-ats">
-                        <div class="hero-card-header">
-                            <span class="hero-card-title">ATS Match</span>
-                            <span class="hero-card-subtext">Avg: 72%</span>
-                        </div>
-                        <div class="hero-card-body">
-                            <div class="hero-card-value" id="dash-ats-score">88%</div>
-                            <div class="hero-card-visual" style="width: 70px; height: 35px;">
-                                <canvas id="sparkline-ats"></canvas>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card hero-card" id="analytics-card-readiness">
+                    <div class="glass-card hero-card">
                         <div class="hero-card-header">
                             <span class="hero-card-title">Interview Readiness</span>
-                            <span class="hero-card-trend trend-up">▲ 76%</span>
+                            <span class="hero-card-trend trend-up"><i class="fa-solid fa-microphone"></i> Practice</span>
                         </div>
                         <div class="hero-card-body">
-                            <div class="hero-card-value" id="dash-readiness-score">76%</div>
-                            <div class="hero-card-visual" style="width: 50px; height: 50px;">
-                                <canvas id="sparkline-readiness"></canvas>
-                            </div>
+                            <div class="hero-card-value" id="dash-readiness-score">0%</div>
+                            <div class="hero-card-icon"><i class="fa-solid fa-chart-line text-success"></i></div>
                         </div>
                     </div>
 
-                    <div class="glass-card hero-card" id="analytics-card-jobs">
+                    <div class="glass-card hero-card">
                         <div class="hero-card-header">
-                            <span class="hero-card-title">Job Match</span>
-                            <span class="hero-card-subtext">Recommended</span>
+                            <span class="hero-card-title">Verified Skills</span>
+                            <span class="hero-card-subtext">Core Skills</span>
                         </div>
                         <div class="hero-card-body">
-                            <div class="hero-card-value" id="counter-job-match">0</div>
-                            <div class="hero-card-icon"><i class="fa-solid fa-briefcase text-secondary"></i></div>
+                            <div class="hero-card-value" id="dash-skills-count">0</div>
+                            <div class="hero-card-icon"><i class="fa-solid fa-award text-warning"></i></div>
                         </div>
                     </div>
 
-                    <div class="glass-card hero-card" id="analytics-card-skills-strength">
+                    <div class="glass-card hero-card">
                         <div class="hero-card-header">
-                            <span class="hero-card-title">Skills Strength</span>
-                            <span class="hero-card-subtext">Verified Tags</span>
+                            <span class="hero-card-title">Focus Areas</span>
+                            <span class="hero-card-subtext" style="color: var(--color-danger)">Suggested Tips</span>
                         </div>
                         <div class="hero-card-body">
-                            <div class="hero-card-value" id="dash-skills-count">18</div>
-                            <div class="hero-card-icon"><i class="fa-solid fa-square-poll-vertical text-success"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card hero-card danger-glow-card" id="analytics-card-weak-skills">
-                        <div class="hero-card-header">
-                            <span class="hero-card-title">Weak Skills</span>
-                            <span class="hero-card-subtext" style="color: var(--color-danger)">Need Review</span>
-                        </div>
-                        <div class="hero-card-body">
-                            <div class="hero-card-value text-danger" id="dash-weak-skills-count">5</div>
-                            <div class="hero-card-icon"><i class="fa-solid fa-triangle-exclamation text-danger"></i>
-                            </div>
+                            <div class="hero-card-value text-danger" id="dash-weak-skills-count">0</div>
+                            <div class="hero-card-icon"><i class="fa-solid fa-lightbulb text-danger"></i></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 1b. Career snapshot: progress / recent activity / recommendations -->
-                <div class="dash-snapshot-grid">
+                <!-- 2. AI Career Advice & Recent Activity Grid -->
+                <div class="dash-snapshot-grid" style="grid-template-columns: 1.2fr 1fr; margin-top: 24px;">
+                    <!-- AI Career Coach Advice -->
                     <div class="glass-card snapshot-card">
-                        <h3 class="card-title-premium"><i class="fa-solid fa-gauge-high"></i> Career Progress</h3>
-                        <div class="progress-list">
-                            <div class="progress-row">
-                                <div class="progress-row-head">
-                                    <span>Resume readiness</span><strong id="prog-resume-val">—</strong>
-                                </div>
-                                <div class="progress-track" role="progressbar" aria-label="Resume readiness"
-                                    aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="prog-resume-track">
-                                    <div class="progress-fill" id="prog-resume-bar"></div>
-                                </div>
+                        <h3 class="card-title-premium" style="display: flex; justify-content: space-between; align-items: center;">
+                            <span><i class="fa-solid fa-robot text-primary"></i> AI Career Advisor</span>
+                            <span class="badge badge-primary">Personalized</span>
+                        </h3>
+                        <div class="ai-chat-bubble-container" style="margin-top: 12px;">
+                            <div class="ai-chat-bubble" style="background: rgba(var(--primary-rgb), 0.08); border-left: 3px solid var(--color-primary); padding: 14px 16px; border-radius: 8px;">
+                                <p id="ai-coach-text-holder" style="font-size: 15px; line-height: 1.5; color: var(--text-main); margin: 0;">
+                                    Welcome to Tech Clevora! Upload your resume or start a mock interview to receive personalized career coaching feedback.
+                                </p>
                             </div>
-                            <div class="progress-row">
-                                <div class="progress-row-head">
-                                    <span>Interview readiness</span><strong id="prog-interview-val">—</strong>
-                                </div>
-                                <div class="progress-track" role="progressbar" aria-label="Interview readiness"
-                                    aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="prog-interview-track">
-                                    <div class="progress-fill fill-purple" id="prog-interview-bar"></div>
-                                </div>
-                            </div>
-                            <div class="progress-row">
-                                <div class="progress-row-head">
-                                    <span>Skill progress</span><strong id="prog-skills-val">—</strong>
-                                </div>
-                                <div class="progress-track" role="progressbar" aria-label="Skill progress"
-                                    aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="prog-skills-track">
-                                    <div class="progress-fill fill-green" id="prog-skills-bar"></div>
-                                </div>
-                            </div>
-                            <div class="progress-row">
-                                <div class="progress-row-head">
-                                    <span>Career roadmap</span><strong id="prog-roadmap-val">—</strong>
-                                </div>
-                                <div class="progress-track" role="progressbar" aria-label="Career roadmap progress"
-                                    aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="prog-roadmap-track">
-                                    <div class="progress-fill fill-amber" id="prog-roadmap-bar"></div>
-                                </div>
+                        </div>
+                        <div style="margin-top: 16px;">
+                            <h4 style="font-size: 13px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; font-weight: 600;">Actionable Steps to Improve:</h4>
+                            <div id="dash-reco-list">
+                                <p class="snapshot-note">Loading recommendations…</p>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Recent Activity -->
                     <div class="glass-card snapshot-card">
-                        <h3 class="card-title-premium"><i class="fa-solid fa-clock-rotate-left"></i> Recent Activity
-                        </h3>
-                        <div class="vertical-timeline-container" id="dash-activity-list" aria-live="polite">
+                        <h3 class="card-title-premium"><i class="fa-solid fa-clock-rotate-left"></i> Recent Activity</h3>
+                        <div class="vertical-timeline-container" id="dash-activity-list" aria-live="polite" style="margin-top: 12px;">
                             <p class="snapshot-note">Loading recent activity…</p>
                         </div>
                     </div>
-
-                    <div class="glass-card snapshot-card">
-                        <h3 class="card-title-premium"><i class="fa-solid fa-lightbulb"></i> Recommended for You</h3>
-                        <div class="reco-list" id="dash-reco-list" aria-live="polite">
-                            <p class="snapshot-note">Loading recommendations…</p>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- 2. AI Career Health Score & AI Insights Row -->
-                <div class="analytics-row-2">
-                    <!-- Career Health Score Gauge -->
-                    <div class="glass-card career-health-card">
-                        <h3 class="card-title-premium"><i class="fa-solid fa-heart-pulse"></i> AI Career Health Score
-                        </h3>
-                        <div class="health-gauge-container">
-                            <svg width="180" height="180" viewBox="0 0 100 100" class="health-gauge">
-                                <circle cx="50" cy="50" r="40" class="gauge-bg" />
-                                <circle cx="50" cy="50" r="40" class="gauge-fill" id="dash-health-gauge-fill"
-                                    stroke-dasharray="251.2" stroke-dashoffset="22.6" /> <!-- 91% score -->
-                            </svg>
-                            <div class="health-gauge-info">
-                                <div class="gauge-val" id="dash-health-score">91%</div>
-                                <div class="gauge-label" id="dash-health-label">Excellent</div>
-                            </div>
+                <!-- 3. Overall Performance & Growth Chart -->
+                <div class="glass-card" style="margin-top: 24px; padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                        <div>
+                            <h3 class="card-title-premium" style="margin: 0;"><i class="fa-solid fa-chart-line text-success"></i> Score & Readiness Progress</h3>
+                            <p style="font-size: 13px; color: var(--text-muted); margin: 4px 0 0 0;">Track your ATS resume score and interview performance over time</p>
                         </div>
-                        <div class="health-gauge-footer">
-                            <i class="fa-solid fa-sparkles text-warning"></i> <span
-                                id="dash-health-coach-text"><strong>AI Coach:</strong> "You are in the top 8% of
-                                candidates for Full Stack Developer positions in your region."</span>
-                        </div>
+                        <span class="badge badge-success">Live Track</span>
                     </div>
-
-                    <!-- AI Resume Coach Insights (Typing Animation Box) -->
-                    <div class="glass-card ai-insights-card">
-                        <h3 class="card-title-premium" style="display: flex; justify-content: space-between;">
-                            <span><i class="fa-solid fa-robot"></i> AI Resume Coach</span>
-                            <span class="badge badge-primary">Estimated ATS: 92%</span>
-                        </h3>
-                        <div class="ai-chat-bubble-container">
-                            <div class="ai-chat-bubble">
-                                <p id="ai-coach-text-holder" class="typing-text-block">Great work! Your resume has
-                                    improved by 18% over the past week.</p>
-                            </div>
-                        </div>
-                        <div class="recommendations-box">
-                            <h4
-                                style="font-size: 13px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;">
-                                Actionable Advice:</h4>
-                            <ul class="recommendation-list">
-                                <li><i class="fa-solid fa-circle-check text-success"></i> Add Docker & Kubernetes
-                                    container details</li>
-                                <li><i class="fa-solid fa-circle-check text-success"></i> Add live URL links to Cloud
-                                    Hosting Projects</li>
-                                <li><i class="fa-solid fa-circle-check text-success"></i> Improve Action Verbs in
-                                    Experience description</li>
-                                <li><i class="fa-solid fa-circle-check text-success"></i> Add a link to your active
-                                    GitHub profile</li>
-                                <li><i class="fa-solid fa-circle-check text-success"></i> Quantify achievements with
-                                    metrics (e.g., % improvement)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. Resume Analytics Grid Section (6 Detailed Charts) -->
-                <div class="section-divider-title" id="analytics">
-                    <h3>Resume Analytics Matrix</h3>
-                    <p>Detailed semantic metrics extracted from documents</p>
-                </div>
-                <div class="resume-charts-grid">
-                    <div class="glass-card chart-card">
-                        <div class="chart-header">
-                            <span class="chart-title">ATS Keyword Match</span>
-                            <span class="badge badge-success">Top Keywords</span>
-                        </div>
-                        <div class="chart-container-wrapper">
-                            <canvas id="chart-keyword-match"></canvas>
-                        </div>
-                    </div>
-
-                    <div class="glass-card chart-card">
-                        <div class="chart-header">
-                            <span class="chart-title">Resume Sections Score</span>
-                            <span class="badge badge-primary">Balance Rating</span>
-                        </div>
-                        <div class="chart-container-wrapper">
-                            <canvas id="chart-sections-score"></canvas>
-                        </div>
-                    </div>
-
-                    <div class="glass-card chart-card">
-                        <div class="chart-header">
-                            <span class="chart-title">ATS Historical Trend</span>
-                            <span class="badge badge-secondary">Growth Rate</span>
-                        </div>
-                        <div class="chart-container-wrapper">
-                            <canvas id="chart-ats-trend"></canvas>
-                        </div>
-                    </div>
-
-                    <div class="glass-card chart-card">
-                        <div class="chart-header">
-                            <span class="chart-title">Resume Completeness</span>
-                            <span class="badge badge-primary">Structure Check</span>
-                        </div>
-                        <div class="chart-container-wrapper">
-                            <canvas id="chart-completeness"></canvas>
-                        </div>
-                    </div>
-
-                    <div class="glass-card chart-card">
-                        <div class="chart-header">
-                            <span class="chart-title">AI Readability Index</span>
-                            <span class="badge badge-success">Excellent Grade</span>
-                        </div>
-                        <div class="chart-container-wrapper">
-                            <canvas id="chart-readability"></canvas>
-                        </div>
-                    </div>
-
-                    <div class="glass-card chart-card">
-                        <div class="chart-header">
-                            <span class="chart-title">Grammar & Tone Audit</span>
-                            <span class="badge badge-danger">Minor Issues</span>
-                        </div>
-                        <div class="chart-container-wrapper">
-                            <canvas id="chart-grammar-analysis"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. Job Match & Skill Treemap & Activity Timeline Row -->
-                <div class="section-divider-title" id="job-matcher">
-                    <h3>Job Match & Skill Coverage</h3>
-                    <p>Real-time opportunities correlated with your technical profile</p>
-                </div>
-                <div class="job-and-skill-grid">
-                    <!-- Job Match Analytics -->
-                    <div class="glass-card job-match-container">
-                        <h3 class="card-title-premium"><i class="fa-solid fa-briefcase"></i> Job Match Analytics</h3>
-                        <div class="job-match-list">
-                            <div class="job-match-item">
-                                <div class="job-match-header">
-                                    <div>
-                                        <div class="job-title-text">Frontend Developer</div>
-                                        <div class="job-company-text">Stripe • $120k-$145k</div>
-                                    </div>
-                                    <div class="job-score-badge text-success">95% Match</div>
-                                </div>
-                                <div class="progress-bar-premium">
-                                    <div class="progress-fill-premium bg-success" style="width: 95%"></div>
-                                </div>
-                                <button class="btn-primary btn-sm job-apply-btn">Apply Now <i
-                                        class="fa-solid fa-arrow-right"></i></button>
-                            </div>
-
-                            <div class="job-match-item">
-                                <div class="job-match-header">
-                                    <div>
-                                        <div class="job-title-text">MERN Stack Engineer</div>
-                                        <div class="job-company-text">Vercel • $130k-$150k</div>
-                                    </div>
-                                    <div class="job-score-badge text-success">97% Match</div>
-                                </div>
-                                <div class="progress-bar-premium">
-                                    <div class="progress-fill-premium bg-success" style="width: 97%"></div>
-                                </div>
-                                <button class="btn-primary btn-sm job-apply-btn">Apply Now <i
-                                        class="fa-solid fa-arrow-right"></i></button>
-                            </div>
-
-                            <div class="job-match-item">
-                                <div class="job-match-header">
-                                    <div>
-                                        <div class="job-title-text">Backend Developer</div>
-                                        <div class="job-company-text">Notion • $115k-$135k</div>
-                                    </div>
-                                    <div class="job-score-badge text-secondary">88% Match</div>
-                                </div>
-                                <div class="progress-bar-premium">
-                                    <div class="progress-fill-premium bg-secondary" style="width: 88%"></div>
-                                </div>
-                                <button class="btn-primary btn-sm job-apply-btn">Apply Now <i
-                                        class="fa-solid fa-arrow-right"></i></button>
-                            </div>
-
-                            <div class="job-match-item">
-                                <div class="job-match-header">
-                                    <div>
-                                        <div class="job-title-text">Software Engineer</div>
-                                        <div class="job-company-text">Linear • $125k-$140k</div>
-                                    </div>
-                                    <div class="job-score-badge text-secondary">84% Match</div>
-                                </div>
-                                <div class="progress-bar-premium">
-                                    <div class="progress-fill-premium bg-secondary" style="width: 84%"></div>
-                                </div>
-                                <button class="btn-primary btn-sm job-apply-btn">Apply Now <i
-                                        class="fa-solid fa-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Skills Treemap representation -->
-                    <div class="glass-card skill-analysis-container" id="skills-analyzer">
-                        <h3 class="card-title-premium"><i class="fa-solid fa-brain"></i> Interactive Skills Strength
-                            (Treemap)</h3>
-                        <div class="skills-treemap-grid">
-                            <div class="treemap-block size-lg bg-grad-primary">
-                                <div class="treemap-title">React</div>
-                                <div class="treemap-percent">95%</div>
-                            </div>
-                            <div class="treemap-block size-lg bg-grad-secondary">
-                                <div class="treemap-title">Node.js</div>
-                                <div class="treemap-percent">88%</div>
-                            </div>
-                            <div class="treemap-block size-md bg-grad-success">
-                                <div class="treemap-title">MongoDB</div>
-                                <div class="treemap-percent">82%</div>
-                            </div>
-                            <div class="treemap-block size-md bg-grad-warning">
-                                <div class="treemap-title">TypeScript</div>
-                                <div class="treemap-percent">78%</div>
-                            </div>
-                            <div class="treemap-block size-sm bg-grad-danger">
-                                <div class="treemap-title">Docker</div>
-                                <div class="treemap-percent">65%</div>
-                            </div>
-                            <div class="treemap-block size-sm bg-grad-info">
-                                <div class="treemap-title">AWS</div>
-                                <div class="treemap-percent">60%</div>
-                            </div>
-                            <div class="treemap-block size-xs">
-                                <div class="treemap-title">System Design</div>
-                                <div class="treemap-percent">72%</div>
-                            </div>
-                            <div class="treemap-block size-xs">
-                                <div class="treemap-title">Git & CI/CD</div>
-                                <div class="treemap-percent">85%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5. Weekly Activity Heatmap Grid -->
-                <div class="section-divider-title">
-                    <h3>Weekly Profile Activity</h3>
-                    <p>Track updates, mock interviews, and improvements over time</p>
-                </div>
-                <div class="glass-card weekly-progress-container">
-                    <h3 class="card-title-premium"><i class="fa-solid fa-calendar-days"></i> AI Optimization
-                        Contributions</h3>
-                    <div class="heatmap-wrapper">
-                        <div class="heatmap-months">
-                            <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span>
-                        </div>
-                        <div class="heatmap-days-grid" id="heatmap-contributions-grid">
-                            <!-- Populated dynamically via JavaScript with days blocks -->
-                        </div>
-                        <div class="heatmap-legend">
-                            <span>Less</span>
-                            <div class="legend-box level-0"></div>
-                            <div class="legend-box level-1"></div>
-                            <div class="legend-box level-2"></div>
-                            <div class="legend-box level-3"></div>
-                            <div class="legend-box level-4"></div>
-                            <span>More</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 6. Mock Interview Analytics & Career Growth Area Chart -->
-                <div class="section-divider-title">
-                    <h3>Interview Performance & Long-term Growth</h3>
-                    <p>Grades tracking and capability projections</p>
-                </div>
-                <div class="interview-and-growth-grid">
-                    <!-- Mock Interview Analytics Card -->
-                    <div class="glass-card interview-analytics-card">
-                        <h3 class="card-title-premium"><i class="fa-solid fa-microphone-lines"></i> Mock Interview
-                            Performance</h3>
-                        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 15px;">
-                            <div style="max-height: 180px;">
-                                <canvas id="chart-interview-radar"></canvas>
-                            </div>
-                            <div class="interview-metrics-list">
-                                <div class="metric-mini-item">
-                                    <span class="metric-mini-label">Confidence</span>
-                                    <span class="metric-mini-val">82%</span>
-                                </div>
-                                <div class="metric-mini-item">
-                                    <span class="metric-mini-label">Technical Accuracy</span>
-                                    <span class="metric-mini-val">78%</span>
-                                </div>
-                                <div class="metric-mini-item">
-                                    <span class="metric-mini-label">Speaking Speed</span>
-                                    <span class="metric-mini-val">135 WPM</span>
-                                </div>
-                                <div class="metric-mini-item">
-                                    <span class="metric-mini-label">Communication</span>
-                                    <span class="metric-mini-val">88%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Career Growth Area Chart Card -->
-                    <div class="glass-card career-growth-card" id="projects">
-                        <h3 class="card-title-premium"><i class="fa-solid fa-chart-area"></i> Career Growth Projections
-                        </h3>
-                        <div class="chart-container-wrapper" style="max-height: 200px;">
-                            <canvas id="chart-career-growth-area"></canvas>
-                        </div>
+                    <div class="chart-container-wrapper" style="height: 260px; position: relative;">
+                        <canvas id="chart-ats-trend"></canvas>
                     </div>
                 </div>
 
