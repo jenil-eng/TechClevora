@@ -1,0 +1,31 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# Byte-compiled / Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Databases & local state
+*.db
+*.sqlite3
+
+# Logs
+*.log
+error.log
+
+# Uploaded User Files
+static/uploads/*
+!static/uploads/.gitkeep
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Environment variables & secrets
+.env
+.env.local
