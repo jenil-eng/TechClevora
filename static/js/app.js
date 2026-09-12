@@ -1493,75 +1493,55 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
  
-        // Chart 3: Easy-to-read Monthly Comparison Bar Chart
+        // Chart 3: Technical Skill Mastery Breakdown (Horizontal Bar Chart)
         const chartTrend = document.getElementById('chart-ats-trend');
         if (chartTrend) {
             if (state.activeCharts.trend) state.activeCharts.trend.destroy();
-            const months = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
-            const atsTrend = stats.ats_trend && stats.ats_trend.length >= 6 ? stats.ats_trend.slice(-6) : [60, 65, 72, 78, 84, 90];
-            const readinessTrend = stats.readiness_trend && stats.readiness_trend.length >= 6 ? stats.readiness_trend.slice(-6) : [52, 60, 68, 74, 80, 86];
+            const skillCategories = ['Frontend Development', 'Backend & APIs', 'Database & SQL', 'System Architecture', 'Cloud & DevOps'];
+            const skillProficiency = [92, 85, 78, 72, 60];
+            const barColors = ['#8B5CF6', '#4F7CFF', '#00D084', '#FACC15', '#FF4D6D'];
 
             state.activeCharts.trend = new Chart(chartTrend, {
                 type: 'bar',
                 data: {
-                    labels: months,
+                    labels: skillCategories,
                     datasets: [
                         {
-                            label: 'ATS Resume Score',
-                            data: atsTrend,
-                            backgroundColor: '#8B5CF6',
-                            borderRadius: 6,
+                            label: 'Proficiency Level',
+                            data: skillProficiency,
+                            backgroundColor: barColors,
+                            borderRadius: 8,
                             borderSkipped: false,
-                            barPercentage: 0.6,
-                            categoryPercentage: 0.7
-                        },
-                        {
-                            label: 'Interview Readiness',
-                            data: readinessTrend,
-                            backgroundColor: '#00D084',
-                            borderRadius: 6,
-                            borderSkipped: false,
-                            barPercentage: 0.6,
-                            categoryPercentage: 0.7
+                            barThickness: 22
                         }
                     ]
                 },
                 options: {
+                    indexAxis: 'y',
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top',
-                            align: 'end',
-                            labels: {
-                                color: '#E2E8F0',
-                                font: { size: 13, weight: 'bold' },
-                                usePointStyle: true,
-                                pointStyle: 'circle',
-                                padding: 20
-                            }
-                        },
+                        legend: { display: false },
                         tooltip: {
                             callbacks: {
-                                label: (context) => ` ${context.dataset.label}: ${context.raw}%`
+                                label: (context) => ` Proficiency Level: ${context.raw}%`
                             }
                         }
                     },
                     scales: {
                         x: {
-                            grid: { display: false },
-                            ticks: { color: '#9CA3AF', font: { size: 12 } }
-                        },
-                        y: {
-                            grid: { color: 'rgba(255, 255, 255, 0.08)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.06)' },
                             ticks: {
                                 color: '#9CA3AF',
                                 font: { size: 12 },
-                                callback: (value) => `${value}%`
+                                callback: (v) => `${v}%`
                             },
                             min: 0,
                             max: 100
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { color: '#E2E8F0', font: { size: 13, weight: '600' } }
                         }
                     }
                 }
