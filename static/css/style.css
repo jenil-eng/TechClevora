@@ -3623,4 +3623,171 @@ body.auth-mode .main-content {
     .auth-spinner { animation-duration: 1.6s; }
 }
 
+/* ==========================================================================
+   COMPREHENSIVE MOBILE & TABLET RESPONSIVE OVERRIDES (320px - 1024px)
+   ========================================================================== */
+
+/* 1. Global Viewport Overflow & Element Constraints */
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+img, video, canvas, svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Scrollable table containers on touch screens */
+.table-responsive,
+.kanban-board-container,
+table {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 2. Responsive Grids Override (Laptops / Tablets / Mobiles <= 992px) */
+@media (max-width: 992px) {
+    /* Collapse multi-column inline grids into responsive single columns */
+    div[style*="grid-template-columns"],
+    .dash-snapshot-grid,
+    .analytics-row-2,
+    .interview-and-growth-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    /* Top navbar layout on mobile & tablet */
+    body.is-authed .top-navbar {
+        padding: 8px 12px;
+        gap: 8px;
+    }
+
+    .top-search {
+        max-width: 200px;
+    }
+
+    .top-user-chip #top-user-name {
+        display: none;
+    }
+
+    /* Hero title & actions on landing page */
+    .hero-title {
+        font-size: clamp(26px, 6vw, 40px);
+        line-height: 1.2;
+    }
+
+    .hero-section {
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .hero-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-badge {
+        margin: 0 auto 15px auto;
+    }
+}
+
+/* 3. Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+    /* Hero KPI summary cards */
+    .hero-cards-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+
+    /* Dashboard Header */
+    .dash-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    /* Quick action buttons */
+    .quick-actions {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px;
+    }
+
+    .quick-action {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+    /* Modals & Glass cards padding */
+    .glass-card,
+    .view-section {
+        padding: 16px 12px !important;
+    }
+
+    /* Interactive Kanban board horizontal scroll on mobile */
+    .kanban-board-container {
+        display: flex !important;
+        overflow-x: auto !important;
+        padding-bottom: 15px;
+        scroll-snap-type: x mandatory;
+        gap: 14px !important;
+    }
+
+    .kanban-column {
+        min-width: 260px;
+        flex: 0 0 260px;
+        scroll-snap-align: start;
+    }
+
+    /* Form controls & comfortable touch targets */
+    .form-control,
+    .btn-primary,
+    .btn-secondary,
+    .auth-input,
+    .auth-submit {
+        min-height: 44px;
+        font-size: 14px;
+    }
+
+    .top-search input {
+        font-size: 13px;
+        padding-left: 32px;
+    }
+}
+
+/* 4. Small Mobile Screens (<= 480px) */
+@media (max-width: 480px) {
+    .hero-cards-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr !important;
+    }
+
+    .dash-title {
+        font-size: 20px;
+    }
+
+    .dash-subtitle {
+        font-size: 13px;
+    }
+
+    .top-search {
+        max-width: 130px;
+    }
+
+    .demo-login-box {
+        padding: 10px !important;
+    }
+
+    .demo-login-box button {
+        width: 100%;
+        flex: 1 1 100% !important;
+    }
+}
+
+
 
