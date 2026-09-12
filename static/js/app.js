@@ -1493,32 +1493,36 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
  
-        // Chart 3: ATS & Interview Progress Trend
+        // Chart 3: Easy-to-read Monthly Comparison Bar Chart
         const chartTrend = document.getElementById('chart-ats-trend');
         if (chartTrend) {
             if (state.activeCharts.trend) state.activeCharts.trend.destroy();
-            const atsTrend = stats.ats_trend || [60, 65, 70, 75, 82, 88];
-            const readinessTrend = stats.readiness_trend || [50, 58, 65, 70, 76, 80];
+            const months = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
+            const atsTrend = stats.ats_trend && stats.ats_trend.length >= 6 ? stats.ats_trend.slice(-6) : [60, 65, 72, 78, 84, 90];
+            const readinessTrend = stats.readiness_trend && stats.readiness_trend.length >= 6 ? stats.readiness_trend.slice(-6) : [52, 60, 68, 74, 80, 86];
+
             state.activeCharts.trend = new Chart(chartTrend, {
-                type: 'line',
+                type: 'bar',
                 data: {
-                    labels: atsTrend.map((_, i) => `Attempt ${i + 1}`),
+                    labels: months,
                     datasets: [
                         {
                             label: 'ATS Resume Score',
                             data: atsTrend,
-                            borderColor: '#8B5CF6',
-                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                            fill: true,
-                            tension: 0.4
+                            backgroundColor: '#8B5CF6',
+                            borderRadius: 6,
+                            borderSkipped: false,
+                            barPercentage: 0.6,
+                            categoryPercentage: 0.7
                         },
                         {
                             label: 'Interview Readiness',
                             data: readinessTrend,
-                            borderColor: '#00D084',
-                            backgroundColor: 'rgba(0, 208, 132, 0.1)',
-                            fill: true,
-                            tension: 0.4
+                            backgroundColor: '#00D084',
+                            borderRadius: 6,
+                            borderSkipped: false,
+                            barPercentage: 0.6,
+                            categoryPercentage: 0.7
                         }
                     ]
                 },
@@ -1526,11 +1530,39 @@ document.addEventListener('DOMContentLoaded', () => {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { display: true, position: 'top', labels: { color: '#9CA3AF', usePointStyle: true, boxWidth: 8 } }
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            align: 'end',
+                            labels: {
+                                color: '#E2E8F0',
+                                font: { size: 13, weight: 'bold' },
+                                usePointStyle: true,
+                                pointStyle: 'circle',
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => ` ${context.dataset.label}: ${context.raw}%`
+                            }
+                        }
                     },
                     scales: {
-                        x: { grid: { display: false }, ticks: { color: '#9CA3AF' } },
-                        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9CA3AF' }, min: 0, max: 100 }
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#9CA3AF', font: { size: 12 } }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.08)' },
+                            ticks: {
+                                color: '#9CA3AF',
+                                font: { size: 12 },
+                                callback: (value) => `${value}%`
+                            },
+                            min: 0,
+                            max: 100
+                        }
                     }
                 }
             });
